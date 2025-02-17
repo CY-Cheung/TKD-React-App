@@ -1,0 +1,160 @@
+.container{
+    width: 100vw;
+    height: 50vw;
+    aspect-ratio: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.row{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.name{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+.leftname{
+    background-color: var(--red-bg-color);
+}
+
+.rightname{
+    background-color: var(--blue-bg-color);
+}
+
+.above{
+    flex: 3;
+}
+
+.below{
+    flex: 13;
+}
+
+
+.left{
+    flex: 14;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--red-bg-color);
+}
+
+.right{
+    flex: 14;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--blue-bg-color);
+}
+
+.center{
+    flex: 8;
+    display: flex;
+    height: 100%;
+    background-color: black;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.matchText{
+    font-size: 3.5vw;
+    font-weight: bold;
+}
+
+.matchNumber{
+    font-size: 4.5vw;
+    font-weight: bold;
+}
+
+.timer{
+    color: white;
+    font-size: 9vw;
+    font-weight: bold;
+}
+
+.gameTimeOut{
+    background-color: black;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+.gameTimer{
+    border: 0.5vw solid yellow;
+}
+
+.roundText{
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.roundNumber{
+    font-size: 5.5vw;
+    font-weight: bold;
+}
+
+.middle{
+    flex: 10;
+    display: flex;
+}
+
+.bottom{
+    flex: 3;
+    display: flex;
+}
+
+.log{
+    flex: 5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.points{
+    flex: 9;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18vw;
+    font-weight: bold;
+}
+
+.leftPoints{
+    background-color: var(--red-pt-color);
+}
+
+.rightPoints{
+    background-color: var(--blue-pt-color);
+}
+
+.GJ{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.GJstring{
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.GJcount{
+    font-size: 5vw;
+    font-weight: bold;
+}
