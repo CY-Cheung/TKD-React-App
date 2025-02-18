@@ -1,5 +1,7 @@
 import './scoreboard.css';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { doc, updateDoc, increment, onSnapshot } from "firebase/firestore";
+import { db } from '../../firebase/firebase';
 
 function Scoreboard() {
   const [isYellow, setIsYellow] = useState(false);
@@ -39,6 +41,24 @@ function Scoreboard() {
         };
     }, []);
   
+  const [redScore, setRedScore] = useState(0);
+  const [blueScore, setBlueScore] = useState(0);
+
+  // 監聽分數變化
+    useEffect(() => {
+      const scoreRef = doc(db, "MATCH A1001", "ROUND 1");
+      const unsubscribe = onSnapshot(scoreRef, (doc) => {
+        if (doc.exists()) {
+          const data = doc.data();
+          setRedScore(data.RedScore || 0);
+          setBlueScore(data.BlueScore || 0);
+        }
+      });
+    
+      // 清理監聽器
+      return () => unsubscribe();
+    }, []);
+
   return (
     <div className="Scoreboard">
       <div className="container">
@@ -51,7 +71,7 @@ function Scoreboard() {
             <div className="middle" style={{flexDirection: isRowReversed ? 'row-reverse' : 'row' }}>
               <div className="leftLog log"></div>
               <div className="leftPoints points">
-                0
+                {redScore}
               </div>
             </div>
             <div className="bottom" style={{flexDirection: isRowReversed ? 'row-reverse' : 'row' }}>
@@ -74,7 +94,7 @@ function Scoreboard() {
               </div>
             </div>
             <div className="game">
-              <div className="timer gameTimer">
+              <div className="timer gameTimer" onClick={toggleColor}>
                 2:00
               </div>
               <div className="timeOut gameTimeOut" onClick={toggleColor}
@@ -90,7 +110,7 @@ function Scoreboard() {
           <div className="right">
             <div className="middle" style={{flexDirection: isRowReversed ? 'row-reverse' : 'row' }}>
               <div className="rightPoints points">
-                0
+                {blueScore}
               </div>
               <div className="rightLog log"></div>
             </div>
