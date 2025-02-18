@@ -1,8 +1,10 @@
 import './button.css';
 
-function Button({ label, color }) {
+function Button({ label, borderColor, background }) {
     const buttonStyle = {
-        borderColor: color,
+        borderColor: borderColor,
+        background: background,
+
     };    
     return (
         <button className="button" style={buttonStyle}>
