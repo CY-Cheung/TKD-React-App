@@ -1,9 +1,9 @@
 import './scoreboard.css';
 import React, { useEffect, useState } from 'react';
-import { doc, updateDoc, increment, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db } from '../../firebase/firebase';
 
-function Scoreboard() {
+export default function Scoreboard() {
   const [isYellow, setIsYellow] = useState(false);
 
   const toggleColor = () => {
@@ -131,5 +131,3 @@ function Scoreboard() {
     </div>
   );
 }
-
-export default Scoreboard;

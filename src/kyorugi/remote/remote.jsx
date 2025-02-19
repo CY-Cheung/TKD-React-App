@@ -3,10 +3,9 @@ import { doc, updateDoc, increment, onSnapshot } from "firebase/firestore";
 import { db } from '../../firebase/firebase';
 import './remote.css';
 
-function Remote() {
+export default function Remote() {
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
-
   // 監聽分數變化
   useEffect(() => {
     const scoreRef = doc(db, "MATCH A1001", "ROUND 1");
@@ -17,7 +16,6 @@ function Remote() {
         setBlueScore(data.BlueScore || 0);
       }
     });
-  
     // 清理監聽器
     return () => unsubscribe();
   }, []);
@@ -65,5 +63,3 @@ function Remote() {
     </div>
   );
 }
-
-export default Remote;
