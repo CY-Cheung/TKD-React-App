@@ -28,43 +28,99 @@ export default function Scoreboard() {
   
   const [isRowReversed, setIsRowReversed] = useState(false);
 
-    const handleKeyDown = (event) => {
-        if (event.key === '\\') {
-            setIsRowReversed(prev => !prev); // 切換狀態
-        }
-    };
+  const handleKeyDown = (event) => {
+      if (event.key === '\\') {
+          setIsRowReversed(prev => !prev); // 切換狀態
+      }
+  };
 
-    useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown); // 添加鍵盤事件監聽
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown); // 清除事件監聽
-        };
-    }, []);
-  
+  useEffect(() => {
+      window.addEventListener('keydown', handleKeyDown); // 添加鍵盤事件監聽
+      return () => {
+          window.removeEventListener('keydown', handleKeyDown); // 清除事件監聽
+      };
+  }, []);
+
+  const [match, setMatch] = useState('');
+  const [round, setRound] = useState(1);
+  const [redName, setRedName] = useState('');
+  const [blueName, setBlueName] = useState('');
+  const [roundTime, setRoundTime] = useState(0);
+  const [redGamJeom, setRedGamJeom] = useState(0);
+  const [blueGamJeom, setBlueGamJeom] = useState(0);
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
 
-  // 監聽分數變化
-    useEffect(() => {
-      const scoreRef = doc(db, "MATCH A1001", "ROUND 1");
-      const unsubscribe = onSnapshot(scoreRef, (doc) => {
-        if (doc.exists()) {
-          const data = doc.data();
-          setRedScore(data.RedScore || 0);
-          setBlueScore(data.BlueScore || 0);
+  // 監聽變化
+  useEffect(() => {
+    const infoRef = doc(db, "Matches", "CurrentInfo");
+    const unsubscribe = onSnapshot(infoRef, (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setMatch(data.CurrentMatch || '');
+        setRound(data.CurrentRound || 1);
+        setRedName(data.RedName || '');
+        setBlueName(data.BlueName || '');
+        setRoundTime(data.RoundTime || 0);
+        if (data.CurrentRound === 1) {
+          setRedGamJeom(data.Round1.RedGamJeom || 0);
+          setBlueGamJeom(data.Round1.BlueGamJeom || 0);
+        } else if (data.CurrentRound === 2) {
+          setRedGamJeom(data.Round2.RedGamJeom || 0);
+          setBlueGamJeom(data.Round2.BlueGamJeom || 0);
+        } else if (data.CurrentRound === 3) {
+          setRedGamJeom(data.Round3.RedGamJeom || 0);
+          setBlueGamJeom(data.Round3.BlueGamJeom || 0);
         }
-      });
-    
-      // 清理監聽器
-      return () => unsubscribe();
-    }, []);
+      }
+    });
+    return () => unsubscribe(); // 清理監聽器
+  }, [round]);
+
+  // 將秒數格式化為 m:ss
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // 確保秒數為兩位數
+  };
+
+  const calculateScore = (scoreData) => {
+    return (scoreData['1pts'] || 0) * 1 +
+           (scoreData['2pts'] || 0) * 2 +
+           (scoreData['3pts'] || 0) * 3 +
+           (scoreData['4pts'] || 0) * 4 +
+           (scoreData['5pts'] || 0) * 5;
+  };
+  
+  useEffect(() => {
+    const infoRef = doc(db, "Matches", "CurrentInfo");
+    const unsubscribe = onSnapshot(infoRef, (doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        // Fetch BlueScore and RedScore
+        const blueScoreData = data.Round1.BlueScore || {};
+        const redScoreData = data.Round1.RedScore || {};
+        
+        // Calculate scores
+        const totalBlueScore = calculateScore(blueScoreData) + redGamJeom;
+        const totalRedScore = calculateScore(redScoreData) + blueGamJeom;
+        
+        // Set scores to state
+        setBlueScore(totalBlueScore);
+        setRedScore(totalRedScore);
+        
+        // Other state updates...
+      }
+    });
+    return () => unsubscribe();
+  }, [redScore, blueScore, redGamJeom, blueGamJeom]);
 
   return (
     <div className="Scoreboard">
       <div className="container">
         <div className="row above" style={{flexDirection: isRowReversed ? 'row-reverse' : 'row' }}>
-          <div className="name leftname">Red Player</div>
-          <div className="name rightname">Blue Player</div>
+          <div className="name leftname">{redName}</div>
+          <div className="name rightname">{blueName}</div>
         </div>
         <div className="row below" style={{flexDirection: isRowReversed ? 'row-reverse' : 'row' }}>
           <div className="left">
@@ -79,7 +135,7 @@ export default function Scoreboard() {
                 <div className="GJ">
                   <p className="GJstring">GAM-JEOM</p>
                   <p className="GJcount">
-                    0
+                    {redGamJeom}
                   </p>
                 </div>
               </div>
@@ -90,12 +146,12 @@ export default function Scoreboard() {
             <div className="match">
               <div className="matchText">MATCH</div>
               <div className="matchNumber">
-                A1001
+                {match}
               </div>
             </div>
             <div className="game">
               <div className="timer gameTimer" onClick={toggleColor}>
-                2:00
+                {formatTime(roundTime)}
               </div>
               <div className="timeOut gameTimeOut" onClick={toggleColor}
                 style={{ backgroundColor: isYellow ? 'yellow' : 'black'}}>Time out</div>
@@ -103,7 +159,7 @@ export default function Scoreboard() {
             <div className="round">
               <div className="roundText">ROUND</div>
               <div className="roundNumber">
-                1
+                {round}
               </div>
             </div>
           </div>
@@ -120,7 +176,7 @@ export default function Scoreboard() {
                 <div className="GJ">
                   <p className="GJstring">GAM-JEOM</p>
                   <p className="GJcount">
-                    0
+                    {blueGamJeom}
                   </p>
                 </div>
               </div>

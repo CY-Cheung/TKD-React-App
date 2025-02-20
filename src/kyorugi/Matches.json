@@ -1,524 +1,178 @@
 {
-    "MatcheNumbers": {
-        "A1001": {
-            "MatchWinner": "",
-            "MatchWinningReason": "",
-            "CurrentRound": 1,
-            "RedPlayer": {
-                "Name": "A1001 Red",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "BluePlayer": {
-                "Name": "A1001 Blue",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "Round": {
-                "1": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "2": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "3": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                }
-            }
+    "CurrentInfo": {
+      "Round1": {
+        "BlueGamJeom": 0,
+        "BlueScore": {
+          "1pts": 0,
+          "2pts": 0,
+          "3pts": 0,
+          "4pts": 0,
+          "5pts": 0
         },
-        "A1002": {
-            "MatchWinner": "",
-            "MatchWinningReason": "",
-            "CurrentRound": 1,
-            "RedPlayer": {
-                "Name": "A1002 Red",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "BluePlayer": {
-                "Name": "A1002 Blue",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "Round": {
-                "1": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "2": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "3": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                }
-            }
+        "IsFinished": false,
+        "IsStarted": false,
+        "IsTimeOut": false,
+        "RedGamJeom": 0,
+        "RedScore": {
+          "1pts": 0,
+          "2pts": 0,
+          "3pts": 0,
+          "4pts": 0,
+          "5pts": 0
         },
-        "A1003": {
-            "MatchWinner": "",
-            "MatchWinningReason": "",
-            "CurrentRound": 1,
-            "RedPlayer": {
-                "Name": "A1003 Red",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "BluePlayer": {
-                "Name": "A1003 Blue",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "Round": {
-                "1": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "2": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "3": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                }
-            }
-        },
-        "A1004": {
-            "MatchWinner": "",
-            "MatchWinningReason": "",
-            "CurrentRound": 1,
-            "RedPlayer": {
-                "Name": "A1004 Red",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "BluePlayer": {
-                "Name": "A1004 Blue",
-                "RoundWin": 0,
-                "RoundScore": {
-                    "1": 0,
-                    "2": 0,
-                    "3": 0
-                }
-            },
-            "Round": {
-                "1": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "2": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                },
-                "3": {
-                    "RoundWinner": "",
-                    "RoundWinningReason": "",
-                    "IsStarted": false,
-                    "IsTimeOut": false,
-                    "IsFinished": false,
-                    "RoundTime": 120,
-                    "RestTime": 60,
-                    "PTGscore": 12,
-                    "PUNnumber": 5,
-                    "RedScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "BlueScore": {
-                        "1": 0,
-                        "2": 0,
-                        "3": 0,
-                        "4": 0,
-                        "5": 0
-                    },
-                    "RedGamJeom": 0,
-                    "BlueGamJeom": 0,
-                    "TieDecision": {
-                        "TechPoints": { "Red": 0, "Blue": 0 },
-                        "HeadKicks": { "Red": 0, "Blue": 0 },
-                        "TrunkKicks": { "Red": 0, "Blue": 0 },
-                        "Punches": { "Red": 0, "Blue": 0 },
-                        "GamJeom": { "Red": 0, "Blue": 0 },
-                        "Tie": false
-                    }
-                }
-            }
+        "RoundWinner": "",
+        "RoundWinningReason": "",
+        "TieDecision": {
+          "GamJeom": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "HeadKicks": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "Punches": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "TechPoints": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "Tie": false,
+          "TrunkKicks": {
+            "Blue": 0,
+            "Red": 0
+          }
         }
+      },
+      "Round2": {
+        "BlueGamJeom": 0,
+        "BlueScore": {
+          "1pts": 0,
+          "2pts": 0,
+          "3pts": 0,
+          "4pts": 0,
+          "5pts": 0
+        },
+        "IsFinished": false,
+        "IsStarted": false,
+        "IsTimeOut": false,
+        "RedGamJeom": 0,
+        "RedScore": {
+          "1pts": 0,
+          "2pts": 0,
+          "3pts": 0,
+          "4pts": 0,
+          "5pts": 0
+        },
+        "RoundWinner": "",
+        "RoundWinningReason": "",
+        "TieDecision": {
+          "GamJeom": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "HeadKicks": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "Punches": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "TechPoints": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "Tie": false,
+          "TrunkKicks": {
+            "Blue": 0,
+            "Red": 0
+          }
+        }
+      },
+      "Round3": {
+        "BlueGamJeom": 0,
+        "BlueScore": {
+          "1pts": 0,
+          "2pts": 0,
+          "3pts": 0,
+          "4pts": 0,
+          "5pts": 0
+        },
+        "IsFinished": false,
+        "IsStarted": false,
+        "IsTimeOut": false,
+        "RedGamJeom": 0,
+        "RedScore": {
+          "1pts": 0,
+          "2pts": 0,
+          "3pts": 0,
+          "4pts": 0,
+          "5pts": 0
+        },
+        "RoundWinner": "",
+        "RoundWinningReason": "",
+        "TieDecision": {
+          "GamJeom": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "HeadKicks": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "Punches": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "TechPoints": {
+            "Blue": 0,
+            "Red": 0
+          },
+          "Tie": false,
+          "TrunkKicks": {
+            "Blue": 0,
+            "Red": 0
+          }
+        }
+      },
+      "BlueName": "Blue Player",
+      "BlueRoundScore": {
+        "1pts": 0,
+        "2pts": 0,
+        "3pts": 0
+      },
+      "CurrentMatch": "A1001",
+      "CurrentRound": 1,
+      "PTGscore": 12,
+      "PUNnumber": 5,
+      "RedName": "Red Player",
+      "RedRoundScore": {
+        "1pts": 0,
+        "2pts": 0,
+        "3pts": 0
+      },
+      "RestTime": 60,
+      "RoundTime": 120
+    },
+    "MatchResults": {
+      "A1001": {
+        "BlueName": "Blue Player",
+        "BlueRoundScore": {
+          "Round1": 0,
+          "Round2": 0,
+          "Round3": 0
+        },
+        "MatchWinner": "",
+        "MatchWinningReason": "",
+        "RedName": "Red Player",
+        "RedRoundScore": {
+          "Round1": 0,
+          "Round2": 0,
+          "Round3": 0
+        }
+      }
     }
-}
+  }

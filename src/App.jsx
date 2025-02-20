@@ -3,14 +3,12 @@ import Scoreboard from './kyorugi/scoreboard/scoreboard';
 import Remote from './kyorugi/remote/remote';
 import SelectMatch from './kyorugi/SelectMatch/SelectMatch';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      {/* <Scoreboard /> */}
-      {/* <Remote /> */}
-      <SelectMatch />
+      <Scoreboard />
+      <Remote />
+      {/* <SelectMatch /> */}
     </div>
   );
 }
-
-export default App;

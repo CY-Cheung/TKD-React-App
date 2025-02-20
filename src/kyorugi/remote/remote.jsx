@@ -4,31 +4,34 @@ import { db } from '../../firebase/firebase';
 import './remote.css';
 
 export default function Remote() {
-  const [redScore, setRedScore] = useState(0);
-  const [blueScore, setBlueScore] = useState(0);
-  // 監聽分數變化
+  const [match, setMatch] = useState('');
+  const [round, setRound] = useState(1);
+
+  // 監聽變化
   useEffect(() => {
-    const scoreRef = doc(db, "MATCH A1001", "ROUND 1");
-    const unsubscribe = onSnapshot(scoreRef, (doc) => {
+    const infoRef = doc(db, "Matches", "CurrentInfo");
+    const unsubscribe = onSnapshot(infoRef, (doc) => {
       if (doc.exists()) {
         const data = doc.data();
-        setRedScore(data.RedScore || 0);
-        setBlueScore(data.BlueScore || 0);
+        setMatch(data.CurrentMatch || '');
+        setRound(data.CurrentRound || 1);
       }
     });
-    // 清理監聽器
-    return () => unsubscribe();
+    return () => unsubscribe(); // 清理監聽器
   }, []);
 
-  const updateScore = async (team, round, score) => {
-    const scoreRef = doc(db, "MATCH A1001", `ROUND ${round}`); // 直接使用新的文檔名稱
+  const updateScore = async (scoreType, round, points) => {
+    const roundKey = `Round${round}`;
+    const scoreField = `${points}pts`; // 例如 '5pts'
+
+    const infoRef = doc(db, "Matches", "CurrentInfo");
+
     try {
-      await updateDoc(scoreRef, {
-        [`${team}Score`]: increment(score)
+      await updateDoc(infoRef, {
+        [`${roundKey}.${scoreType}.${scoreField}`]: increment(1) // 使用 Firestore 的增量更新
       });
-      console.log(`${team}Score updated by ${score}`);
-    } catch (e) {
-      console.error("Error updating score: ", e);
+    } catch (error) {
+      console.error("Error updating score: ", error);
     }
   };
 
@@ -36,28 +39,30 @@ export default function Remote() {
     <div className="Remote">
       <div className="Left">
         <div className="Col145">
-          <button onClick={() => updateScore('Red', 1, 5)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 5 </button>
-          <button onClick={() => updateScore('Red', 1, 4)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 4 </button>
-          <button onClick={() => updateScore('Red', 1, 1)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 1 </button>
+          <button onClick={() => updateScore('RedScore', round, 5)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 5 </button>
+          <button onClick={() => updateScore('RedScore', round, 4)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 4 </button>
+          <button onClick={() => updateScore('RedScore', round, 1)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 1 </button>
         </div>
         <div className="Col23">
-          <button onClick={() => updateScore('Red', 1, 3)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 3 </button>
-          <button onClick={() => updateScore('Red', 1, 2)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 2 </button>
+          <button onClick={() => updateScore('RedScore', round, 3)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 3 </button>
+          <button onClick={() => updateScore('RedScore', round, 2)} style={{ borderColor: 'var(--red-bg-color)', background: 'var(--red-pt-color)' }}> 2 </button>
         </div>
       </div>
       <div className="Center">
-        <p>RedScore: {redScore}</p>
-        <p>BlueScore: {blueScore}</p>
+        <p>CurrentMatch: {match}</p>
+        <p>CurrentRound: {round}</p>
+        <p>RedScore: </p>
+        <p>BlueScore: </p>
       </div>
       <div className="Right">
         <div className="Col23">
-          <button onClick={() => updateScore('Blue', 1, 3)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 3 </button>
-          <button onClick={() => updateScore('Blue', 1, 2)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 2 </button>
+          <button onClick={() => updateScore('BlueScore', round, 3)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 3 </button>
+          <button onClick={() => updateScore('BlueScore', round, 2)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 2 </button>
         </div>
         <div className="Col145">
-          <button onClick={() => updateScore('Blue', 1, 5)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 5 </button>
-          <button onClick={() => updateScore('Blue', 1, 4)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 4 </button>
-          <button onClick={() => updateScore('Blue', 1, 1)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 1 </button>
+          <button onClick={() => updateScore('BlueScore', round, 5)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 5 </button>
+          <button onClick={() => updateScore('BlueScore', round, 4)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 4 </button>
+          <button onClick={() => updateScore('BlueScore', round, 1)} style={{ borderColor: 'var(--blue-bg-color)', background: 'var(--blue-pt-color)' }}> 1 </button>
         </div>
       </div>
     </div>
