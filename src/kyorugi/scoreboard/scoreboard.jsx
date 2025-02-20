@@ -98,18 +98,16 @@ export default function Scoreboard() {
       if (doc.exists()) {
         const data = doc.data();
         // Fetch BlueScore and RedScore
-        const blueScoreData = data.Round1.BlueScore || {};
-        const redScoreData = data.Round1.RedScore || {};
-        
-        // Calculate scores
-        const totalBlueScore = calculateScore(blueScoreData) + redGamJeom;
-        const totalRedScore = calculateScore(redScoreData) + blueGamJeom;
-        
-        // Set scores to state
-        setBlueScore(totalBlueScore);
-        setRedScore(totalRedScore);
-        
-        // Other state updates...
+        if (data.CurrentRound === 1) {
+          setRedScore(calculateScore(data.Round1.RedScore || {}) + blueGamJeom);
+          setBlueScore(calculateScore(data.Round1.BlueScore || {}) + redGamJeom);
+        } else if (data.CurrentRound === 2) {
+          setRedScore(calculateScore(data.Round2.RedScore || {}) + blueGamJeom);
+          setBlueScore(calculateScore(data.Round2.BlueScore || {}) + redGamJeom);
+        } else if (data.CurrentRound === 3) {
+          setRedScore(calculateScore(data.Round3.RedScore || {}) + blueGamJeom);
+          setBlueScore(calculateScore(data.Round3.BlueScore || {}) + redGamJeom);
+        }
       }
     });
     return () => unsubscribe();
