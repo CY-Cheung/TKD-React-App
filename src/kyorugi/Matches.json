@@ -22,29 +22,7 @@
         },
         "RoundWinner": "",
         "RoundWinningReason": "",
-        "TieDecision": {
-          "GamJeom": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "HeadKicks": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "Punches": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "TechPoints": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "Tie": false,
-          "TrunkKicks": {
-            "Blue": 0,
-            "Red": 0
-          }
-        }
+        "IsTie": false
       },
       "Round2": {
         "BlueGamJeom": 0,
@@ -68,29 +46,7 @@
         },
         "RoundWinner": "",
         "RoundWinningReason": "",
-        "TieDecision": {
-          "GamJeom": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "HeadKicks": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "Punches": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "TechPoints": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "Tie": false,
-          "TrunkKicks": {
-            "Blue": 0,
-            "Red": 0
-          }
-        }
+        "IsTie": false
       },
       "Round3": {
         "BlueGamJeom": 0,
@@ -114,29 +70,7 @@
         },
         "RoundWinner": "",
         "RoundWinningReason": "",
-        "TieDecision": {
-          "GamJeom": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "HeadKicks": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "Punches": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "TechPoints": {
-            "Blue": 0,
-            "Red": 0
-          },
-          "Tie": false,
-          "TrunkKicks": {
-            "Blue": 0,
-            "Red": 0
-          }
-        }
+        "IsTie": false
       },
       "BlueName": "Blue Player",
       "BlueRoundScore": {
