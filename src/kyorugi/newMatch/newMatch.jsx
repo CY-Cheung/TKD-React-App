@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { db } from '../../firebase/firebase'; // 根据您的 Firebase 设置调整导入
 import { doc, updateDoc } from 'firebase/firestore'; // 导入 Firestore 更新函数
+import { useNavigate } from 'react-router-dom'; // 导入 useNavigate
 import './newMatch.css';
 
 export default function NewMatch() {
@@ -11,6 +12,8 @@ export default function NewMatch() {
     const [restTime, setRestTime] = useState('');
     const [ptgScore, setPtgScore] = useState('');
     const [punScore, setPunScore] = useState('');
+    const navigate = useNavigate(); // 使用 useNavigate
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -67,6 +70,7 @@ export default function NewMatch() {
             setRestTime('');
             setPtgScore('');
             setPunScore('');
+            navigate('/scoreboard'); // 提交后导航
         } catch (error) {
             console.error("Error updating document: ", error);
             alert('Error updating match information. Please try again.');
