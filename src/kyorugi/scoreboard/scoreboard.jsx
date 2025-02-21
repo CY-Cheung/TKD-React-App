@@ -17,35 +17,63 @@ export default function Scoreboard() {
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
 
+  const updateMatchStatus = (isStarted, isTimeOut) => {
+    const currentRoundRef = doc(db, "Matches", "CurrentInfo");
+    if (!isStarted) {
+      setIsStarted(true);
+      setIsTimeOut(false);
+      updateDoc(currentRoundRef, {
+        IsStarted: true,
+        IsTimeOut: false
+      });
+    } else {
+      if (!isTimeOut) {
+        setIsTimeOut(true);
+        updateDoc(currentRoundRef, {
+          IsTimeOut: true
+        });
+      } else {
+        setIsTimeOut(false);
+        updateDoc(currentRoundRef, {
+          IsTimeOut: false
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    const currentRoundRef = doc(db, "Matches", "CurrentInfo");
+    let timerId;
+
+    if (isStarted && !isTimeOut) {
+      timerId = setInterval(async () => {
+        setRoundTime(prevTime => {
+          if (prevTime > 0) {
+            const newTime = prevTime - 1;
+            updateDoc(currentRoundRef, {
+              CurrentRoundTime: newTime
+            });
+            return newTime;
+          } else {
+            clearInterval(timerId); // 如果時間到，停止計時器
+            return 0; // 確保不會變成負數
+          }
+        });
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(timerId); // 清理計時器
+    };
+  }, [isStarted, isTimeOut]); // 依賴於 isStarted 和 isTimeOut
 
   const handleKeyDown = (event) => {
     if (event.key === '\\') {
-      setIsRowReversed(prev => !prev); // 切换状态
+      setIsRowReversed(prev => !prev); // 切換狀態
     }
     if (event.code === 'Space') {
-      event.preventDefault(); // 防止默认的空格键行为
-
-      const currentRoundRef = doc(db, "Matches", "CurrentInfo");
-      if (!isStarted) {
-        setIsStarted(true);
-        setIsTimeOut(false);
-        updateDoc(currentRoundRef, {
-          IsStarted: true,
-          IsTimeOut: false
-        });
-      } else {
-        if (!isTimeOut) {
-          setIsTimeOut(true);
-          updateDoc(currentRoundRef, {
-            IsTimeOut: true
-          });
-        } else {
-          setIsTimeOut(false);
-          updateDoc(currentRoundRef, {
-            IsTimeOut: false
-          });
-        }
-      }
+      event.preventDefault(); // 防止預設的空格鍵行為
+      updateMatchStatus(isStarted, isTimeOut);
     }
   };
 
@@ -58,13 +86,13 @@ export default function Scoreboard() {
   };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown); // 添加键盘事件监听
+    window.addEventListener('keydown', handleKeyDown); // 添加鍵盤事件監聽
     return () => {
-      window.removeEventListener('keydown', handleKeyDown); // 清除事件监听
+      window.removeEventListener('keydown', handleKeyDown); // 清除事件監聽
     };
   }, [isStarted, isTimeOut, round]);
 
-  // 监听变化
+  // 監聽變化
   useEffect(() => {
     const infoRef = doc(db, "Matches", "CurrentInfo");
     const unsubscribe = onSnapshot(infoRef, (doc) => {
@@ -83,14 +111,14 @@ export default function Scoreboard() {
         setBlueScore(calculateScore(data.BlueScore || {}) + redGamJeom);
       }
     });
-    return () => unsubscribe(); // 清理监听器
+    return () => unsubscribe(); // 清理監聽器
   }, [match, redScore, blueScore, redGamJeom, blueGamJeom]);
 
-  // 将秒数格式化为 m:ss
+  // 將秒數格式化為 m:ss
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // 确保秒数为两位数
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // 確保秒數為兩位數
   };
 
   return (
@@ -127,7 +155,7 @@ export default function Scoreboard() {
                 {match}
               </div>
             </div>
-            <div className="game">
+            <div className="game" onClick={() => updateMatchStatus(isStarted, isTimeOut)}>
               <div className="timer gameTimer">
                 {formatTime(roundTime)}
               </div>

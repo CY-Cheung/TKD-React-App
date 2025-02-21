@@ -11,7 +11,8 @@ export default function App() {
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/newmatch" element={<NewMatch />} />
+          <Route path="/" element={<NewMatch />} />
+          <Route path="/newmatch" element={<NewMatch />} />
             <Route path="/scoreboard" element={<Scoreboard />} />
             <Route path="/remote" element={<Remote />} />
           </Routes>
