@@ -5,6 +5,8 @@
       "BlueName": "",
       "RoundTime": 120,
       "RestTime": 60,
+      "CurrentRoundTime": 120,
+      "CurrentRestTime": 60,
       "PTGscore": 12,
       "PUNnumber": 5,
       "CurrentRound": 1,

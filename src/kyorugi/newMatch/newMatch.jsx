@@ -27,6 +27,8 @@ export default function NewMatch() {
                 BlueName: bluePlayerName,
                 RoundTime: parseInt(roundTime, 10), // 转换为整数
                 RestTime: parseInt(restTime, 10),   // 转换为整数
+                CurrentRoundTime: parseInt(roundTime, 10), // 转换为整数
+                CurrentRestTime: parseInt(restTime, 10),   // 转换为整数
                 PTGscore: parseInt(ptgScore, 10),    // 转换为整数
                 PUNnumber: parseInt(punScore, 10),    // 转换为整数
                 CurrentRound: 1,
