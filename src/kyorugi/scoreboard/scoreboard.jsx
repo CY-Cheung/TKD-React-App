@@ -11,38 +11,38 @@ export default function Scoreboard() {
   const [round, setRound] = useState(1);
   const [redName, setRedName] = useState('');
   const [blueName, setBlueName] = useState('');
-  const [roundTime, setRoundTime] = useState(0);
+  const [roundTime, setRoundTime] = useState(120);
   const [redGamJeom, setRedGamJeom] = useState(0);
   const [blueGamJeom, setBlueGamJeom] = useState(0);
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
 
+
   const handleKeyDown = (event) => {
     if (event.key === '\\') {
-      setIsRowReversed(prev => !prev); // 切換狀態
+      setIsRowReversed(prev => !prev); // 切换状态
     }
     if (event.code === 'Space') {
-      event.preventDefault(); // Prevents default space bar actions like scrolling
+      event.preventDefault(); // 防止默认的空格键行为
 
-      // Handle IsStarted and IsTimeOut logic
       const currentRoundRef = doc(db, "Matches", "CurrentInfo");
       if (!isStarted) {
         setIsStarted(true);
         setIsTimeOut(false);
         updateDoc(currentRoundRef, {
-          [`Round${round}.IsStarted`]: true,
-          [`Round${round}.IsTimeOut`]: false
+          IsStarted: true,
+          IsTimeOut: false
         });
       } else {
         if (!isTimeOut) {
           setIsTimeOut(true);
           updateDoc(currentRoundRef, {
-            [`Round${round}.IsTimeOut`]: true
+            IsTimeOut: true
           });
         } else {
           setIsTimeOut(false);
           updateDoc(currentRoundRef, {
-            [`Round${round}.IsTimeOut`]: false
+            IsTimeOut: false
           });
         }
       }
@@ -58,13 +58,13 @@ export default function Scoreboard() {
   };
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown); // 添加鍵盤事件監聽
+    window.addEventListener('keydown', handleKeyDown); // 添加键盘事件监听
     return () => {
-      window.removeEventListener('keydown', handleKeyDown); // 清除事件監聽
+      window.removeEventListener('keydown', handleKeyDown); // 清除事件监听
     };
   }, [isStarted, isTimeOut, round]);
 
-  // 監聽變化
+  // 监听变化
   useEffect(() => {
     const infoRef = doc(db, "Matches", "CurrentInfo");
     const unsubscribe = onSnapshot(infoRef, (doc) => {
@@ -74,25 +74,23 @@ export default function Scoreboard() {
         setRound(data.CurrentRound || 1);
         setRedName(data.RedName || '');
         setBlueName(data.BlueName || '');
-        setRoundTime(data.RoundTime || 0);
-        setRedGamJeom(data[`Round${data.CurrentRound}`].RedGamJeom || 0);
-        setBlueGamJeom(data[`Round${data.CurrentRound}`].BlueGamJeom || 0);
-        setIsStarted(data[`Round${data.CurrentRound}`].IsStarted || false);
-        setIsTimeOut(data[`Round${data.CurrentRound}`].IsTimeOut || false);
+        setRoundTime(data.CurrentRoundTime || 0);
         setRedGamJeom(data.RedGamJeom || 0);
         setBlueGamJeom(data.BlueGamJeom || 0);
+        setIsStarted(data.IsStarted || false);
+        setIsTimeOut(data.IsTimeOut || false);
         setRedScore(calculateScore(data.RedScore || {}) + blueGamJeom);
         setBlueScore(calculateScore(data.BlueScore || {}) + redGamJeom);
       }
     });
-    return () => unsubscribe(); // 清理監聽器
+    return () => unsubscribe(); // 清理监听器
   }, [match, redScore, blueScore, redGamJeom, blueGamJeom]);
 
-  // 將秒數格式化為 m:ss
+  // 将秒数格式化为 m:ss
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // 確保秒數為兩位數
+    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // 确保秒数为两位数
   };
 
   return (
