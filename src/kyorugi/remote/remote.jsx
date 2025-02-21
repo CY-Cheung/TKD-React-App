@@ -23,9 +23,7 @@ export default function Remote() {
   const updateScore = async (scoreType, round, points) => {
     const roundKey = `Round${round}`;
     const scoreField = `${points}pts`; // 例如 '5pts'
-
     const infoRef = doc(db, "Matches", "CurrentInfo");
-
     try {
       await updateDoc(infoRef, {
         [`${roundKey}.${scoreType}.${scoreField}`]: increment(1) // 使用 Firestore 的增量更新

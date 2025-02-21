@@ -1,112 +1,45 @@
 {
     "CurrentInfo": {
-      "Round1": {
-        "BlueGamJeom": 0,
-        "BlueScore": {
-          "1pts": 0,
-          "2pts": 0,
-          "3pts": 0,
-          "4pts": 0,
-          "5pts": 0
-        },
-        "IsFinished": false,
-        "IsStarted": false,
-        "IsTimeOut": false,
-        "RedGamJeom": 0,
-        "RedScore": {
-          "1pts": 0,
-          "2pts": 0,
-          "3pts": 0,
-          "4pts": 0,
-          "5pts": 0
-        },
-        "RoundWinner": "",
-        "RoundWinningReason": "",
-        "IsTie": false
-      },
-      "Round2": {
-        "BlueGamJeom": 0,
-        "BlueScore": {
-          "1pts": 0,
-          "2pts": 0,
-          "3pts": 0,
-          "4pts": 0,
-          "5pts": 0
-        },
-        "IsFinished": false,
-        "IsStarted": false,
-        "IsTimeOut": false,
-        "RedGamJeom": 0,
-        "RedScore": {
-          "1pts": 0,
-          "2pts": 0,
-          "3pts": 0,
-          "4pts": 0,
-          "5pts": 0
-        },
-        "RoundWinner": "",
-        "RoundWinningReason": "",
-        "IsTie": false
-      },
-      "Round3": {
-        "BlueGamJeom": 0,
-        "BlueScore": {
-          "1pts": 0,
-          "2pts": 0,
-          "3pts": 0,
-          "4pts": 0,
-          "5pts": 0
-        },
-        "IsFinished": false,
-        "IsStarted": false,
-        "IsTimeOut": false,
-        "RedGamJeom": 0,
-        "RedScore": {
-          "1pts": 0,
-          "2pts": 0,
-          "3pts": 0,
-          "4pts": 0,
-          "5pts": 0
-        },
-        "RoundWinner": "",
-        "RoundWinningReason": "",
-        "IsTie": false
-      },
-      "BlueName": "Blue Player",
-      "BlueRoundScore": {
-        "1pts": 0,
-        "2pts": 0,
-        "3pts": 0
-      },
-      "CurrentMatch": "A1001",
-      "CurrentRound": 1,
+      "CurrentMatch": "",
+      "RedName": "",
+      "BlueName": "",
+      "RoundTime": 120,
+      "RestTime": 60,
       "PTGscore": 12,
       "PUNnumber": 5,
-      "RedName": "Red Player",
-      "RedRoundScore": {
+      "CurrentRound": 1,
+      "IsFinished": false,
+      "IsStarted": false,
+      "IsTimeOut": false,
+      "RedGamJeom": 0,
+      "BlueGamJeom": 0,
+      "RedScore": {
         "1pts": 0,
         "2pts": 0,
-        "3pts": 0
+        "3pts": 0,
+        "4pts": 0,
+        "5pts": 0
       },
-      "RestTime": 60,
-      "RoundTime": 120
+      "BlueScore": {
+        "1pts": 0,
+        "2pts": 0,
+        "3pts": 0,
+        "4pts": 0,
+        "5pts": 0
+      },
+      "Round1": {
+        "RoundWinner": "",
+        "RoundWinningReason": ""
+      },
+      "Round2": {
+        "RoundWinner": "",
+        "RoundWinningReason": ""
+      },
+      "Round3": {
+        "RoundWinner": "",
+        "RoundWinningReason": ""
+      }
     },
     "MatchResults": {
-      "A1001": {
-        "BlueName": "Blue Player",
-        "BlueRoundScore": {
-          "Round1": 0,
-          "Round2": 0,
-          "Round3": 0
-        },
-        "MatchWinner": "",
-        "MatchWinningReason": "",
-        "RedName": "Red Player",
-        "RedRoundScore": {
-          "Round1": 0,
-          "Round2": 0,
-          "Round3": 0
-        }
-      }
     }
   }

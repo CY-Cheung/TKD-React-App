@@ -49,6 +49,14 @@ export default function Scoreboard() {
     }
   };
 
+  const calculateScore = (scoreData) => {
+    return (scoreData['1pts'] || 0) * 1 +
+           (scoreData['2pts'] || 0) * 2 +
+           (scoreData['3pts'] || 0) * 3 +
+           (scoreData['4pts'] || 0) * 4 +
+           (scoreData['5pts'] || 0) * 5;
+  };
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown); // 添加鍵盤事件監聽
     return () => {
@@ -71,10 +79,14 @@ export default function Scoreboard() {
         setBlueGamJeom(data[`Round${data.CurrentRound}`].BlueGamJeom || 0);
         setIsStarted(data[`Round${data.CurrentRound}`].IsStarted || false);
         setIsTimeOut(data[`Round${data.CurrentRound}`].IsTimeOut || false);
+        setRedGamJeom(data.RedGamJeom || 0);
+        setBlueGamJeom(data.BlueGamJeom || 0);
+        setRedScore(calculateScore(data.RedScore || {}) + blueGamJeom);
+        setBlueScore(calculateScore(data.BlueScore || {}) + redGamJeom);
       }
     });
     return () => unsubscribe(); // 清理監聽器
-  }, [round]);
+  }, [match, redScore, blueScore, redGamJeom, blueGamJeom]);
 
   // 將秒數格式化為 m:ss
   const formatTime = (seconds) => {
