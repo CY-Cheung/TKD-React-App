@@ -7,6 +7,7 @@ export default function Scoreboard() {
   const [isRowReversed, setIsRowReversed] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   const [isTimeOut, setIsTimeOut] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
   const [match, setMatch] = useState('');
   const [round, setRound] = useState(1);
   const [redName, setRedName] = useState('');
@@ -44,8 +45,7 @@ export default function Scoreboard() {
   useEffect(() => {
     const currentRoundRef = doc(db, "Matches", "CurrentInfo");
     let timerId;
-
-    if (isStarted && !isTimeOut) {
+    if (isStarted && !isTimeOut && !isFinished) {
       timerId = setInterval(async () => {
         setRoundTime(prevTime => {
           if (prevTime > 0) {
@@ -60,12 +60,14 @@ export default function Scoreboard() {
           }
         });
       }, 1000);
+    } else {
+      setRoundTime(roundTime);
+      clearInterval(timerId);
     }
-
     return () => {
       clearInterval(timerId); // 清理計時器
     };
-  }, [isStarted, isTimeOut]); // 依賴於 isStarted 和 isTimeOut
+  }, [isStarted, isTimeOut, isFinished]); // 依賴於 isStarted 和 isTimeOut
 
   const handleKeyDown = (event) => {
     if (event.key === '\\') {
@@ -107,12 +109,13 @@ export default function Scoreboard() {
         setBlueGamJeom(data.BlueGamJeom || 0);
         setIsStarted(data.IsStarted || false);
         setIsTimeOut(data.IsTimeOut || false);
+        setIsFinished(data.IsFinished || false);
         setRedScore(calculateScore(data.RedScore || {}) + blueGamJeom);
         setBlueScore(calculateScore(data.BlueScore || {}) + redGamJeom);
       }
     });
     return () => unsubscribe(); // 清理監聽器
-  }, [match, redScore, blueScore, redGamJeom, blueGamJeom]);
+  }, [match, redScore, blueScore, redGamJeom, blueGamJeom, isStarted, isTimeOut, isFinished]);
 
   // 將秒數格式化為 m:ss
   const formatTime = (seconds) => {
